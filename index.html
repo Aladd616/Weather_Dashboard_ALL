@@ -22,10 +22,12 @@
     <title>Document</title>
 </head>
 <body class="flex-column min-100-vh">
-    <header class='hero'>
-        <h1 class='app-title'>Weather DashBoard</h1>
+    <header class='hero align-center'>
+        <!-- title header -->
+        <h1 class='app-title text-center'>Weather DashBoard</h1>
     </header>
     <main class="flex row justify-space-between">
+        <!-- search box card -->
         <div class='col-12 col-md-4'>
             <div class='card'>'
                 <h3 class='card-header'>Search for a City:</h3>
@@ -38,10 +40,26 @@
             </div>
         </div>
 
-        <div class='col-12 col-md-8'>
-            <div id="today-container" class='today-box'></div>
-            <div id='5day-container' class='day-list'></div>
+        <!-- the top current weather card -->
+        <section class="card w-50">
+            <div class="card-body">
+                <h5 class="card-title" id="today-date"></h5>
+                <ul class='list-group list-group-flush'>
+                    <li class="list-group-item" id="today-temp"></li>
+                    <li class="list-group-item" id="today-wind"></li>
+                    <li class="list-group-item"id="today-hum"></li>
+                    <li class="list-group-item"id="today-uv"></li>
+                </ul>
+        </section>
+
+        <!-- if 5 day forecast section -->
+        <div class='row'>
+            <h4 class='subtitle'>5-Day Forecast:</h4>
+            <div class='col-sm-6'>
+                <div id='5day-container' class='day-list'></div>
+            </div>
         </div>
+        
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>

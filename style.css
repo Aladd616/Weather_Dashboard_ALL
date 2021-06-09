@@ -1,0 +1,17 @@
+.favorable {
+    background-color: forestgreen;
+    color: white;
+}
+
+.moderate {
+    background-color: yellow;
+}
+
+.severe {
+    background-color: blueviolet;
+    color: white;
+}
+
+li {
+    padding-right: 20px;
+}
