@@ -1,17 +1,26 @@
 .favorable {
-    background-color: forestgreen;
-    color: white;
+    color: forestgreen;
+    font-weight: bolder;
 }
 
 .moderate {
-    background-color: yellow;
+    color: yellow;
+    font-weight: bolder;
 }
 
 .severe {
-    background-color: blueviolet;
-    color: white;
+    color: blueviolet;
+     font-weight: bolder;
 }
 
-li {
-    padding-right: 20px;
+ul {
+    list-style-type: none;
+}
+
+h4 {
+   padding-left:75px;
+}
+
+.hidden {
+    
 }

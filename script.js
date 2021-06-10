@@ -10,6 +10,7 @@ var currentWind = document.getElementById('today-wind');
 var currentuvi = document.getElementById('today-uv');
 var cardContainer = document.getElementById('5day-container');
 var weatherCards = document.getElementById('')
+var locationIcon = document.querySelector('.weather-icon');
 
 var pastCity = []
 console.log('pastCity',pastCity);
@@ -72,10 +73,14 @@ var displayDayForecast = function(lat, long) {
 
         
     //    grabs the data for the current days weather card
+       var icon = data.current.weather[0].icon;
+       locationIcon.innerHTML = `<img src="icons/${icon}.png">`
        currentTemp.textContent = 'Temp: ' + data.current.temp;
        currentWind.textContent = 'Wind: ' + data.current.wind_speed;
        currentHum.textContent = 'Humidity: ' + data.current.humidity;
        currentuvi.textContent = 'UV Index: ' + data.current.uvi;
+        
+        
 
 // changes the background color of the UV index section of the Current days weather card based on the UV vlaue
        if (data.current.uvi <=2 ) {
@@ -89,7 +94,13 @@ var displayDayForecast = function(lat, long) {
          if (data.current.uvi >= 8 ) {
             currentuvi.classList = 'severe'
         }
-                
+             
+        // if (weather = "Rain") {
+        //     dayCityTitle.classList = 'fas fa-cloud-rain'
+        // }
+        // else if (weather = 'Clouds') {
+        //     dayCityTitle.classList = 'fas fa-cloud-sun'
+        // }
 
         // for loop to create the 5 day forecast cards
        for (var i = 1; i < 6; i++) {
@@ -98,12 +109,13 @@ var displayDayForecast = function(lat, long) {
             var dailyWind= 'Wind: ' + data.daily[i].wind_speed;
             var dailyHum= 'Humidity: ' + data.daily[i].humidity;
             var futureDate = moment().add(i, 'days').format('l');
-
+            var icon = data.daily[i].weather[0].icon;
+            
 
            
         // creates the cards and adds them to the HTML text
              var card = document.createElement('div');
-             card.className = 'card weatherForecast';
+             card.className = 'card';
              
              var cardBody = document.createElement('div');
              cardBody.className = 'card-body';
@@ -114,6 +126,10 @@ var displayDayForecast = function(lat, long) {
 
              var weatherList = document.createElement('ul')
              weatherList.className = 'list-group list-group-flush'
+
+             var weatherIcon = document.createElement('li');
+             weatherIcon.className = 'list-group-item';
+             weatherIcon.innerHTML = `<img src="icons/${icon}.png">`
 
              var tempList = document.createElement('li');
              tempList.className = 'list-group-item';
@@ -129,6 +145,7 @@ var displayDayForecast = function(lat, long) {
 
              cardBody.appendChild(title);
              cardBody.appendChild(weatherList);
+             weatherList.appendChild(weatherIcon);
              weatherList.appendChild(tempList);
              weatherList.appendChild(windList);
              weatherList.appendChild(humList);
@@ -144,5 +161,9 @@ var displayDayForecast = function(lat, long) {
     })
     
 }
+
+// function weatherImage() {
+//     if ()
+// }
 // event listener for the first button
 cityFormEl.addEventListener('submit', cityForm);
